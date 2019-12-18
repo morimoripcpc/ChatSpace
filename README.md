@@ -7,8 +7,8 @@
 |password|string|null: false|
 
 ### Association
-- has_many :group
-- has_many :message
+- has_many :groups
+- has_many :messages
 - has_many  :groups,  through:  :groups_users
 - has_many :groups_users
 
@@ -31,7 +31,7 @@
 |user_id|integer|null: false, foreign_key: true|
 
 - belongs_to :user
-- has_many :message
+- has_many :messages
 - has_many  :users,  through:  :groups_users
 - has_many :groups_users
 
