@@ -10,6 +10,7 @@
 - has_many :group
 - has_many :message
 - has_many  :groups,  through:  :groups_users
+- has_many :groups_users
 
 ## groups_usersテーブル
 
@@ -32,6 +33,7 @@
 - belongs_to :user
 - has_many :message
 - has_many  :users,  through:  :groups_users
+- has_many :groups_users
 
 
 ## messageテーブル
