@@ -1,13 +1,12 @@
-## groups_usersテーブル
-
+# Pictweet DB設計
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-
+|email|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
 ### Association
-- belongs_to :group
-- belongs_to :user
-
+- has_many :group
+- has_many :comments
 
 
