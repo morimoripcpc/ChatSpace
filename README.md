@@ -1,24 +1,48 @@
-# README
+# Pictweet DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false|
+|password|string|null: false|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :messages
+- has_many  :groups,  through:  :groups_users
+- has_many :groups_users
 
-Things you may want to cover:
+## groups_usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* System dependencies
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* Configuration
+## groupsテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|groupname|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
-* Database initialization
+- has_many :messages
+- has_many  :users,  through:  :groups_users
+- has_many :groups_users
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## messageテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false|
+|image|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* Deployment instructions
+- belongs_to :user
+- belongs_to :group
 
-* ...
+
