@@ -15,7 +15,7 @@
    padding: 0 20px;
    
    
-    .header-one {
+    .header__one {
      background-color:#ffffff;
      height: 20px;
      width: 260px;
@@ -24,7 +24,7 @@
      display: flex;
      justify-content: space-between;
 
-      .user-name{
+      .user__name{
        background-color: #253141;
        height: 20px;
        width: 200px;
@@ -43,14 +43,14 @@
           float: right;
           line-height: 20px;
           display: flex;
-          // justify-content: space-between;
+          
           padding-top: 40px;
           
-        .icon-one{
+        .icon__one{
           margin-left: 20px;
 
         }
-        .icon-two{
+        .icon__two{
           margin-left: 5px;
         }
        
@@ -69,13 +69,13 @@
    width: 300px;
    padding: 20px 20px 0;
    display: flex;
-    .footer-a{
+    .footer__a{
 
-      .footer-one{
+      .footer__one{
         font-size: 15px;
         color: #ffffff;
       }
-      .footer-two{
+      .footer__two{
         font-size: 11px;
         color: #ffffff;
         margin-top: 5px;
@@ -94,18 +94,18 @@
   padding: 0px 40px 0;
   display: flex;
   justify-content: space-between;
-    .main-header-c{
+    .main-header__c{
      margin-top: 35px;
       .main-header-a{
         font-size: 20px;
         margin-bottom: 15px;
         
       }
-      .main-header-b{
+      .main-header__b{
         font-size: 12px;    
       }       
     }
-    .main-header-d{
+    .main-header__d{
      height: 40px;
      line-height: 40px;
      font-size: 16px;
@@ -146,11 +146,11 @@
         &__image{
           font-size: 1.3rem;
           position: absolute;
-          // right: 160px;
+          
           right:10px;
-          // left:0px;
+          
           top:12px;
-          // bottom:0px;
+          
           cursor: pointer;
           &__file{
             display: none;
