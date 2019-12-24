@@ -1,0 +1,21 @@
+.chat
+  .main-header
+    .main-header-c
+    
+      .main-header-a
+        mori
+      .main-header-b
+        mori
+    .main-header-d  
+      = link_to "#" do
+        edit
+  .main-content
+  .main-footer    
+    .new__message
+      .input-box
+        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+        %label{class: "input-box__image"}
+          = icon('far', 'image')
+          %input{type: "file", class:"input-box__image__file"}
+      %input{type: "submit", class: "subit-btn"}
+    
