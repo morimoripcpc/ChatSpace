@@ -15,10 +15,12 @@
    padding: 0 20px;
    
    
-    .header__one {
+   
+    &__one {
      background-color:#ffffff;
      height: 20px;
      width: 260px;
+
      top: 40px;
      left: 20px;
      display: flex;
@@ -46,11 +48,11 @@
           
           padding-top: 40px;
           
-        .icon__one{
+        &__one{
           margin-left: 20px;
 
         }
-        .icon__two{
+        &__two{
           margin-left: 5px;
         }
        
@@ -69,13 +71,12 @@
    width: 300px;
    padding: 20px 20px 0;
    display: flex;
-    .footer__a{
-
-      .footer__one{
+    &__a {
+      &__one {
         font-size: 15px;
         color: #ffffff;
       }
-      .footer__two{
+      &__two {
         font-size: 11px;
         color: #ffffff;
         margin-top: 5px;
@@ -94,27 +95,28 @@
   padding: 0px 40px 0;
   display: flex;
   justify-content: space-between;
-    .main-header__c{
-     margin-top: 35px;
-      .main-header-a{
-        font-size: 20px;
-        margin-bottom: 15px;
-        
-      }
-      .main-header__b{
-        font-size: 12px;    
+    &__c{
+      margin-top: 35px;
+      &__a{
+          font-size: 20px;
+          margin-bottom: 15px;
+         }
+      &__b{
+          font-size: 12px;    
       }       
     }
-    .main-header__d{
-     height: 40px;
-     line-height: 40px;
-     font-size: 16px;
-     padding: 0 20px;
-     margin-top: 30px;
-     border: solid 1px #38aef0;
-     color: #38aef0;
+    &__d{
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        padding: 0 20px;
+        margin-top: 30px;
+        border: solid 1px #38aef0;
+        color: #38aef0;
+      .edit{
+        text-decoration: none;
+      }
     }  
-  
   }
 
  .main-content {
@@ -146,11 +148,8 @@
         &__image{
           font-size: 1.3rem;
           position: absolute;
-          
           right:10px;
-          
           top:12px;
-          
           cursor: pointer;
           &__file{
             display: none;
