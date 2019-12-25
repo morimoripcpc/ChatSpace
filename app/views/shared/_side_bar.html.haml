@@ -1,0 +1,25 @@
+.side
+  .header
+    .header__one
+      .user__name
+        = current_user.name
+          
+      .icon
+        .icon__one
+          = link_to new_group_path do
+            = icon('fas', 'edit', class: 'strong')
+           
+        .icon__two   
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: 'strong')
+          
+        
+             
+  .footer
+    - current_user.groups.each do |group|
+      .footer__a
+        = link_to '#' do
+          .footer__a__one
+            = group.name
+          .footer__a__two
+            まだメッセージがありません
