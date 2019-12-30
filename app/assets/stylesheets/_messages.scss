@@ -122,6 +122,7 @@
   width: calc(100vw - 300px);
   padding: 46px 40px;
  }
+
   .main-footer {
     background-color: #d2d2d2;
     height: 90px;
@@ -132,36 +133,42 @@
     .new__message{
       display: flex;
       width: 100%;
-      .input-box{
+      .form{
         position: relative;
-        
-        &__text{
+        display: flex;
+        &__form{
+          display: flex;
+        }
+        &__message{
           height: 50px;
           width: 950px;
           padding: 0 40px 0 10px;
           color: #434a54;
           border-style: none;
          }
-        &__image{
-          font-size: 1.3rem;
+        &__mask{
+          &__image{
+            font-size: 1.3rem;
           position: absolute;
-          right:10px;
+          right:130px;
           top:12px;
           cursor: pointer;
+          }
           &__file{
             display: none;
           }
         }
+        &__submit{
+          width: 100px;
+          height: 50px;
+          padding: 0 30px;
+          margin-left: 15px;
+          background-color: #38aef0;
+          color: white;
+        }
     }
     }
-    .subit-btn{
-      width: 100px;
-      height: 50px;
-      padding: 0 30px;
-      margin-left: 15px;
-      background-color: #38aef0;
-      color: white;
-    }
+   
   }
 }   
 
