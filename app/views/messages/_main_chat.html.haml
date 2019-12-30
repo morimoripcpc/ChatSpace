@@ -3,20 +3,32 @@
     .main-header__c
     
       .main-header__c__a
-        mori
+        = @group.name
       .main-header__c__b
-        mori
-    .main-header__d  
-      = link_to "#" ,class:'edit'do
-        edit
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group) ,class:'edit'do
+      .main-header__d  
+      
+        Edit
       .edit
+          
+
   .main-content
+    = render @messages
+
   .main-footer    
     .new__message
-      .input-box
-        %input.input-box__text{type: "text", placeholder: "type a message"}
-        %label.input-box__image
-          = icon('far', 'image')
-          %input.input-box__image__file{type: "file"}
-      %input.subit-btn{type: "submit"}
-    
+      .form
+        = form_for [@group, @message],{html: {class: 'form__form'}} do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = icon('fas', 'image', class: 'icon')
+              = f.file_field :image, class: 'form__mask__file'
+          = f.submit 'Send', class: 'form__submit'
+
+
+
+
+  
