@@ -121,6 +121,7 @@
   height: calc(100vh - 190px); 
   width: calc(100vw - 300px);
   padding: 46px 40px;
+  overflow: scroll;
  }
 
   .main-footer {
@@ -130,7 +131,7 @@
     display: flex;
     padding: 20px 40px;
 
-    .new__message{
+    .messages{
       display: flex;
       width: 100%;
       .form{
