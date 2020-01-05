@@ -18,7 +18,7 @@
     = render @messages
 
   .main-footer    
-    .new__message
+    .messages
       .form
         = form_for [@group, @message],{html: {class: 'form__form'}} do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
