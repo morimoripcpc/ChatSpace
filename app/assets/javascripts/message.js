@@ -87,7 +87,6 @@ $(function(){
           messages.forEach(function(message) {
             insertHTML += buildHTML(message);
           });
-        console.log(insertHTML);
         $('.main-content').append(insertHTML);
         $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
         $('form')[0].reset();
@@ -97,7 +96,6 @@ $(function(){
       })
 
       .fail(function() {
-        
         alert("メッセージ送信に失敗しました");
       });
     };
