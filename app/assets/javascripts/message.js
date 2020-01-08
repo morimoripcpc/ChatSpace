@@ -1,7 +1,6 @@
 
 $(function(){ 
 
-  // console.log(last_message_id);
 
   function buildHTML(message){
     if (message.image) {
@@ -44,11 +43,11 @@ $(function(){
      return html;
    };
  }
-
+// 非同期通信
  $('#new_message').on('submit', function(e){
   e.preventDefault();
-   var formData = new FormData(this);
-   var url = $(this).attr('action')
+  var formData = new FormData(this);
+  var url = $(this).attr('action')
   $.ajax({
     url: url,
     type: "POST",
@@ -57,69 +56,52 @@ $(function(){
     processData: false,
     contentType: false
   })
- 
-   .done(function(messages){
-     console.log('success');
-     if (messages.length !== 0) {
-       var insertHTML = '';
-       $.each(messages, function(i, message) {
-         insertHTML += buildHTML(message)
-       });
- 
-     var html = buildHTML(message);
+   .done(function(data){
+     var html = buildHTML(data);
      $('.main-content').append(html);
      $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
      $('form')[0].reset();
      $('.form__submit').prop('disabled', false);
-     }
-     $('.messages').append(insertHTML);
    })
- 
    .fail(function() {
-     console.log('error');
      alert("メッセージ送信に失敗しました");
    });
  })
 
- });
+//  自動更新
+    var reloadMessages = function() {
+    last_message_id = $('.message:last').data("message-id");
+    console.log(last_message_id);
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data:  {id: last_message_id},
 
-$('#new_message').on('submit', function(e){
- e.preventDefault();
-//  var formData = new FormData(this);
-//  var url = $(this).attr('action')
- last_message_id = $('.message:last').data("message-id");
- console.log(last_message_id);
- $.ajax({
-   url: "api/messages",
-   type: 'get',
-   dataType: 'json',
-   data:  {id: last_message_id},
-   processData: false,
-   contentType: false
- })
+    })
 
-  .done(function(messages){
-    console.log('success');
-    if (messages.length !== 0) {
-      var insertHTML = '';
-      $.each(messages, function(i, message) {
-        insertHTML += buildHTML(message)
+      .done(function(messages){
+        console.log(messages);
+        if (messages.length !== 0) {
+          var insertHTML = '';
+          messages.forEach(function(message) {
+            insertHTML += buildHTML(message);
+          });
+        console.log(insertHTML);
+        $('.main-content').append(insertHTML);
+        $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
+        $('form')[0].reset();
+        $('.form__submit').prop('disabled', false);
+        }
+        
+      })
+
+      .fail(function() {
+        console.log('error');
+        alert("メッセージ送信に失敗しました");
       });
-
-    var html = buildHTML(message);
-    $('.main-content').append(html);
-    $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
-    $('form')[0].reset();
-    $('.form__submit').prop('disabled', false);
-    }
-    $('.messages').append(insertHTML);
-  })
-
-  .fail(function() {
-    console.log('error');
-    alert("メッセージ送信に失敗しました");
-  });
-})
+    };
+    
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 7000);
   }
