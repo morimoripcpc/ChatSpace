@@ -1,10 +1,10 @@
 
 $(function(){ 
 
-  console.log(last_message_id);
+  // console.log(last_message_id);
 
   function buildHTML(message){
-    if (message.content && message.image) {
+    if (message.image) {
      var html =
       `<div class="message" data-message-id=${message.id}>
          <div class="upper-message">
@@ -44,12 +44,51 @@ $(function(){
      return html;
    };
  }
+
+ $('#new_message').on('submit', function(e){
+  e.preventDefault();
+   var formData = new FormData(this);
+   var url = $(this).attr('action')
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: formData,
+    dataType: 'json',
+    processData: false,
+    contentType: false
+  })
+ 
+   .done(function(messages){
+     console.log('success');
+     if (messages.length !== 0) {
+       var insertHTML = '';
+       $.each(messages, function(i, message) {
+         insertHTML += buildHTML(message)
+       });
+ 
+     var html = buildHTML(message);
+     $('.main-content').append(html);
+     $('.main-content').animate({ scrollTop: $('.main-content')[0].scrollHeight});
+     $('form')[0].reset();
+     $('.form__submit').prop('disabled', false);
+     }
+     $('.messages').append(insertHTML);
+   })
+ 
+   .fail(function() {
+     console.log('error');
+     alert("メッセージ送信に失敗しました");
+   });
+ })
+
+ });
+
 $('#new_message').on('submit', function(e){
  e.preventDefault();
- var formData = new FormData(this);
- var url = $(this).attr('action')
+//  var formData = new FormData(this);
+//  var url = $(this).attr('action')
  last_message_id = $('.message:last').data("message-id");
-
+ console.log(last_message_id);
  $.ajax({
    url: "api/messages",
    type: 'get',
