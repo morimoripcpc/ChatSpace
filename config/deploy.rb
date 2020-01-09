@@ -3,16 +3,16 @@
 lock '3.11.2'
 
 # Capistranoのログの表示に利用する
-set :application, '<自身のアプリケーション名>'
+set :application, 'ChatSpace'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:<Githubのユーザー名>/<レポジトリ名>.git'
+set :repo_url,  'git@github.com:morimori/ChatSpace.git'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
-set :rbenv_ruby, '<このアプリで使用しているrubyのバージョン>' #カリキュラム通りに進めた場合、2.5.1か2.3.1です
+set :rbenv_ruby, '2.5.1' #カリキュラム通りに進めた場合、2.5.1か2.3.1です
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
