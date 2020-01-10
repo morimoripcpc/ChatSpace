@@ -2,7 +2,7 @@ app_path = File.expand_path('../../../', __FILE__)
 
 working_directory "#{app_path}/current"
 
-working_directory app_path
+# working_directory app_path
 
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 
