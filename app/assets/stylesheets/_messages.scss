@@ -125,13 +125,8 @@
   overflow: scroll;
   
   .message {
-
     .upper-message{
       display: flex;
-
-      .upper-message__user-name {
-
-      }
 
       .upper-message__date{
         margin-left: 10px;
@@ -201,4 +196,14 @@
 
 .edit{
   text-decoration: none;
+}
+
+.message{
+  .upper-message{
+    // padding-bottom: 15px;
+  }
+  .lower-message{
+    padding-bottom: 50px;
+    padding-top: 15px;
+  }
 }
